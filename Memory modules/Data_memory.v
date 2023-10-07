@@ -4,7 +4,7 @@ module Data_memory
 input clk, reset_n, WE,
 input [DEPTH-1:0] addr,
 input [WIDTH-1:0] WD,
-output reg [WIDTH-1:0] RD,
+output reg [WIDTH-1:0] RD
 );
 reg [WIDTH-1:0] ram [0:2**DEPTH-1];
 integer i;
