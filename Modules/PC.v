@@ -1,4 +1,4 @@
-module PC_counter(
+module PC(
     input  clk,
     input  reset_n,
     input  [31:0] inp,
