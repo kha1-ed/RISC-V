@@ -1,4 +1,4 @@
-odule Instruction_Memory
+module Instruction_Memory
 #(parameter WIDTH = 32, DEPTH = 8)
 (
 input [WIDTH-1:0] addr,
