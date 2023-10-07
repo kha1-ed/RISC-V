@@ -1,26 +1,21 @@
 module ALU(
-    input  [31:0] SrcA, SrcB,
-    input  [2:0]  ALUControl,
-    output reg [31:0] ALUResult,
-    output reg zero
+    input  [31:0] inp1, inp2,
+    input  [2:0]  sel,
+    output reg [31:0] out,
+    output reg zero_flag
     );
     
     always @(*) begin
-        case(ALUControl)
-            3'b000: ALUResult = SrcA + SrcB ;           // add (lw , sw)
-            3'b001: ALUResult = SrcA - SrcB ;           // sub (beq)
-            3'b010: ALUResult = SrcA & SrcB ;           // and
-            3'b011: ALUResult = SrcA | SrcB ;           // or
-            3'b101: ALUResult = (SrcA < SrcB) ? 1 : 0 ; //slt      
-                default: ALUResult = 32'b0 ;     
+        case(sel)
+            3'b000: out = inp1 + inp2 ;           // add (lw , sw)
+            3'b001: out = inp1 - inp2 ;           // sub (beq)
+            3'b010: out = inp1 & inp2 ;           // and
+            3'b011: out = inp1 | inp2 ;           // or
+            3'b101: out = (inp1 < inp2) ? 32'd1 : 32'd0 ; //slt      
+            default: out = 32'b0 ;     
         endcase
     end 
     
-    always @(*) begin
-        if ( ALUResult == 0 )
-            zero = 1 ;
-        else
-            zero = 0 ;
-    end
+zero_flag = out == 32'd0;
     
 endmodule
