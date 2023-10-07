@@ -1,7 +1,7 @@
 module mux3(
   input [31:0] inp1, inp2, inp3,
   input [1:0] sel,
-  output [31:0] out
+  output reg [31:0] out
 );
   always@(*)
     begin
